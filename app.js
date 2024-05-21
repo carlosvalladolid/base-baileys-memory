@@ -1,8 +1,8 @@
 const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot')
-
 const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
+const { EVENTS } = require('@bot-whatsapp/bot')
 
 // Function to call a web API
 async function callWebApi(url, message) {
@@ -29,17 +29,30 @@ async function callWebApi(url, message) {
 const flowPrincipal = addKeyword(['hola'])
     .addAnswer('Buenas, buenas!')
 
-const flowCarbyne = addKeyword('911-USAMEX')
+/*const flowCarbyne = addKeyword('911-USAMEX')
     .addAction(async(ctx, { flowDynamic }) => {
         console.log('Context Body:', ctx.body)
         const apiResponse = await callWebApi('https://kipcalm.azurewebsites.net/Whatsapp/getWhatsappMessage', ctx.body);
 
+        console.log('Mensaje recibido: ' + ctx.body);
+
+        return await flowDynamic(`Tu mensaje es: ${ctx.body}`)
+    })*/
+
+const flowBienvenida = addKeyword(EVENTS.WELCOME)
+    .addAction(async(ctx, { flowDynamic }) => {
+        console.log('Context Body:', ctx.body)
+        const apiResponse = await callWebApi('https://kipcalm.azurewebsites.net/Whatsapp/getWhatsappMessage', ctx.body);
+
+        console.log('Mensaje recibido: ' + ctx.body);
+
         return await flowDynamic(`Tu mensaje es: ${ctx.body}`)
     })
+    //.addAnswer('Bienvenido a este chatbot')
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowPrincipal, flowCarbyne])
+    const adapterFlow = createFlow([flowPrincipal, flowBienvenida])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({
