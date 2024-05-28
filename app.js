@@ -37,7 +37,7 @@ const flowBienvenida = addKeyword(EVENTS.WELCOME)
 
         const apiResponse = await callWebApi('https://kipcalm.azurewebsites.net/Whatsapp/getWhatsappMessage', ctx.body);
 
-        console.log('Mensaje recibido: ' + ctx.body);
+        console.log('Respuesta: ' + JSON.stringify(apiResponse, null, 2));
 
         return await flowDynamic(`Tu mensaje es: ${ctx.body}`)
     })
