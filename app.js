@@ -6,7 +6,7 @@ const { EVENTS } = require('@bot-whatsapp/bot')
 
 // Function to call a web API
 async function callWebApi(url, message) {
-    const serverNumber = "8124247504";
+    const serverNumber = "8124241086";
 
     try {
         const { default: fetch } = await import('node-fetch');
