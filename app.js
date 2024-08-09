@@ -4,10 +4,10 @@ const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 const { EVENTS } = require('@bot-whatsapp/bot')
 
+const serverNumber = "8124241086";
+
 // Function to call a web API
 async function callWebApi(url, message) {
-    const serverNumber = "8124267007";
-
     try {
         const { default: fetch } = await import('node-fetch');
         const options = {
@@ -31,6 +31,9 @@ async function callWebApi(url, message) {
 const flowPrincipal = addKeyword(['hola'])
     .addAnswer('Buenas, buenas!')
 
+const flowStatus = addKeyword(['¿Estás disponible?'])
+    .addAnswer('SI-' + serverNumber)
+
 const flowBienvenida = addKeyword(EVENTS.WELCOME)
     .addAction(async(ctx, { flowDynamic }) => {
         console.log('Context Body:', ctx.body)
@@ -39,7 +42,8 @@ const flowBienvenida = addKeyword(EVENTS.WELCOME)
 
         console.log('Respuesta: ' + JSON.stringify(apiResponse, null, 2));
 
-        return await flowDynamic(`Tu mensaje es: ${ctx.body}`)
+        //return await flowDynamic(`Tu mensaje es: ${ctx.body}`)
+        return
     })
 
 const main = async () => {
