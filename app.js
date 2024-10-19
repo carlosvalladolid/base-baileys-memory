@@ -17,7 +17,7 @@ async function callWebApi(url, message) {
             },
             body: JSON.stringify({ message, serverNumber })
         };
-
+  
         const response = await fetch(url, options);
         const data = await response.json();
 
@@ -34,7 +34,8 @@ const flowPrincipal = addKeyword(['hola'])
 const flowStatus = addKeyword(['¿Estás disponible?'])
     .addAnswer('SI-' + serverNumber)
 
-const flowBienvenida = addKeyword(EVENTS.WELCOME)
+//const flowBienvenida = addKeyword(EVENTS.WELCOME)
+const flowBienvenida = addKeyword(EVENTS.WELCOME, { sensitive: true })
     .addAction(async(ctx, { flowDynamic }) => {
         console.log('Context Body:', ctx.body)
 
