@@ -43,8 +43,8 @@ const flowBienvenida = addKeyword(EVENTS.WELCOME, { sensitive: true })
 
         console.log('Respuesta: ' + JSON.stringify(apiResponse, null, 2));
 
-        //return await flowDynamic(`Tu mensaje es: ${ctx.body}`)
-        return
+        // Responder algo al mensaje de Carbyne para que no se bloquee el chat
+        return await flowDynamic(`Tu mensaje es: ${ctx.body}`)
     })
 
 const main = async () => {
