@@ -4,7 +4,7 @@ const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 const { EVENTS } = require('@bot-whatsapp/bot')
 
-const serverNumber = "8124247504";
+const serverNumber = "8124267007";
 
 // Function to call a web API
 async function callWebApi(url, message) {
