@@ -39,6 +39,11 @@ const flowBienvenida = addKeyword(EVENTS.WELCOME, { sensitive: true })
     .addAction(async(ctx, { flowDynamic }) => {
         console.log('Context Body:', ctx.body)
 
+        // Validar si contiene el texto "911-USAMEX"
+        if (!ctx.body.includes("911-USAMEX")) {
+            return; // Sale de la función sin hacer nada más
+        }
+
         const apiResponse = await callWebApi('https://kipcalm.azurewebsites.net/Whatsapp/getWhatsappMessage', ctx.body);
 
         console.log('Respuesta: ' + JSON.stringify(apiResponse, null, 2));
