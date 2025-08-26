@@ -28,10 +28,10 @@ async function callWebApi(url, message) {
     }
 }
 
-const flowPrincipal = addKeyword(['hola'])
-    .addAnswer('Buenas, buenas!')
+const flowPrincipal = addKeyword(['Estatus'])
+    .addAnswer('Corriendo...')
 
-const flowStatus = addKeyword(['confirmar la disponibilidad'])
+const flowStatus = addKeyword(['Hola 8124241086'])
     .addAnswer('SI-' + serverNumber)
 
 //const flowBienvenida = addKeyword(EVENTS.WELCOME)
