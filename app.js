@@ -4,7 +4,7 @@ const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 const { EVENTS } = require('@bot-whatsapp/bot')
 
-const serverNumber = "8124247504";
+const serverNumber = "8124241086";
 
 // Function to call a web API
 async function callWebApi(url, message) {
@@ -31,7 +31,7 @@ async function callWebApi(url, message) {
 const flowPrincipal = addKeyword(['Estatus'])
     .addAnswer('Corriendo...')
 
-const flowStatus = addKeyword(['Su solicitud 8124247504'])
+const flowStatus = addKeyword(['Su solicitud 8124241086'])
     .addAnswer('SI-' + serverNumber)
 
 //const flowBienvenida = addKeyword(EVENTS.WELCOME)
